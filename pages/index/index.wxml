@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<swiper
+  indicator-dots = "ture"
+  indicator-color = "red"
+  autoplay = "ture">
+  <block wx:for="{{background}}" wx:key="*this">
+    <swiper-item>
+      {{index + "+" + item}}
+    </swiper-item>
+  </block>
+</swiper>
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{!userInfo}}">
+      <image class="userinfo-avatar" src="/image/icons8-anonymous-mask-500.png"></image>
+      <text>欢迎光临西西里</text>
+    </block>
+    <block wx:else="">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+      <text>{{userInfo.nickName}},欢迎光临西西里</text>
+    </block>
+  </view>
+  <view class="line"></view>
+  <view class="entrance">
+    <view class="self-help">
+      <navigator url="/pages/list/list?model='self-help'">自提</navigator>
+<!-- 自提 icon 绑定自提页 pages -->
+    </view>
+    <view class="delivery">
+      <navigator url="/pages/list/list?model='delivery'">外卖</navigator>
+<!-- 外卖 icon 绑定点单页 pages可合一，用wx：if，把地址屏蔽 -->
+    </view>
+  </view>
+</view>

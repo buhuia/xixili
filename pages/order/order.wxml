@@ -1,0 +1,4 @@
+<view class="list">
+  <view>当前订单</view>
+  <view>历史订单</view>
+</view>

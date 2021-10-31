@@ -1,0 +1,48 @@
+/**index.wxss**/
+page{
+  height: 100%;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #aaa;
+  flex: 1 0 39%;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.entrance {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  flex: 1 0 59%;
+  align-items: center;
+}
+
+.line {
+  width: 80%;
+  height:2rpx;
+  margin: 0 auto;
+  background:rgb(206, 203, 203);
+  }
+
+.self-help,.delivery {
+  width: 200rpx;
+  height: 300rpx;
+  background-color: aqua;
+  text-align:center;
+  line-height: 300rpx;
+}
+
+swiper {
+  height: 30%;
+  margin: 0 auto;
+}
