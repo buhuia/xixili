@@ -12,7 +12,7 @@
 <view class="container">
   <view class="userinfo">
     <block wx:if="{{!userInfo}}">
-      <image class="userinfo-avatar" src="/image/icons8-anonymous-mask-500.png"></image>
+      <image class="userinfo-avatar" src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/icons8-anonymous-mask-500.png"></image>
       <text>欢迎光临西西里</text>
     </block>
     <block wx:else="">

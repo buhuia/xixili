@@ -1,39 +1,52 @@
-<!-- <view class="swiper">轮播图 自动获取</view> -->
 <view>{{model}}</view>
 <view class="total-list">
   <scroll-view class="menu" scroll-y="true">
-    <view class="menu-list {{selectIndex === index ? 'select' : ''}}" id="m{{index}}" data-index="{{index}}" wx:for="{{listData}}" wx:key="*this" bindtap="selectMenu">
+    <view class="menu-list {{selectIndex === index ? 'select' : ''}}" id="m{{index}}" data-index="{{index}}" wx:for="{{listData}}" wx:key="index" bindtap="selectMenu">
       {{item.kind}}
     </view>
   </scroll-view>
   <scroll-view class="list" scroll-y="true" bindscroll="scroll" scroll-into-view="{{listIndex}}">
-    <view wx:for="{{listData}}" wx:key="*this" id="l{{index}}">
+    <view wx:for="{{listData}}" wx:key="index" id="l{{index}}">
       <view class="title">{{item.kind}}</view>
-      <view class="content-list" wx:for="{{item.content}}" wx:for-item="content" wx:key="*this" bindtap="goToDetail" data-firstIndex="{{firstIndex}}" data-foodIndex="{{index}}">
-        <image class="food-image">图像</image>
+      <view class="content-list" wx:for="{{item.content}}" wx:for-item="content" wx:key="index" bindtap="goToDetail" data-firstIndex="{{firstIndex}}" data-foodIndex="{{index}}">
+        <image class="food-image" src="{{content.images[0]}}">图像</image>
         <view class="food-info">
           <view>{{content.foodName}}</view>
           <view class="food-price">
             <view>{{content.price}}</view>
-            <block wx:if="{{content.detail.length > 0}}">
-              <view>选规格</view>
-            </block>
-            <block wx:else>
-              <block wx:if="{{cartData}}">
-                <view>-{{cartData.content.foodName.number}}</view>
+            <view style="display: flex;"> 
+              <block wx:if="{{content.detail.length > 0}}">
+                <view bindtap="goToDetail">选规格</view>
               </block>
               <block wx:else>
-                <view>+</view>
+                <view wx:for="{{cartData}}" wx:key="index">
+                  <view style="display: flex;" wx:if="{{item.foodName === content.foodName}}">
+                    <view catchtap="deleteItem" data-item="{{content.foodName}}">-</view>
+                    <view>{{item.number}}</view>
+                  </view>
+                </view>
+                <view catchtap="addItem" data-item="{{content}}">+</view>
               </block>
-            </block>
+            </view>
           </view>
         </view>
       </view>
     </view>
   </scroll-view>
 </view>
-<view class="shopping-cart">
-    <image class="cart-image">购物车图片</image>
+<page-container show="{{showCart}}" round="ture" bind:afterleave="closeCart">
+  <scroll-view style="height: 1000rpx;" scroll-y="ture">
+    <view wx:for="{{cartData}}" wx:key="*this" style="height: 500rpx;">
+      <view>{{item.foodName}}</view>
+      <view>{{item.price*item.number}}</view>
+      <view>{{item.number}}</view>
+    </view>
+  </scroll-view>
+</page-container>
+<view class="shopping-cart" bindtap="showCart">
+    <image class="cart-image" src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/cart.svg"></image>
     <view>总价：{{totalPrice}}</view>
-    <button class="cart-button">结算</button>
-</view>   
+    <button class="cart-button" size="mini">
+      <text class="button-content">结算</text>
+    </button>
+</view>
