@@ -1,4 +1,5 @@
 <view class="list">
   <view>当前订单</view>
   <view>历史订单</view>
+  <view wx:if="{{isAdmin}}">待处理订单</view>
 </view>

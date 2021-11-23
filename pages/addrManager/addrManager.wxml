@@ -1,0 +1,14 @@
+<!--pages/dizhiguanli/dizhiguanli.wxml-->
+<view wx:for="{{addrList}}" wx:key="*this" style="margin: 20rpx;">
+  <view>对勾表示选中</view>
+  <view>
+    <view>{{item.title}}</view>
+    <view>{{item.name}}</view>
+    <view>{{item.callNumber}}</view>
+  </view>
+  <view bindtap="setAddr" data-index="{{index}}" style="background-color: teal;">修改</view>
+  <view bindtap="deleteAddr" data-index="{{index}}">删除</view>
+</view>
+<view bindtap="goToAddAddr" style="position: fixed; bottom: 0;width: 750rpx;">
+  <button>添加配送地址</button>
+</view>

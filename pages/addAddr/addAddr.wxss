@@ -1,0 +1,15 @@
+/* pages/tianjiadizhi/tianjiadizhi.wxss */
+
+.page-section{
+  margin-bottom: 20rpx;
+}
+
+.switchCell{
+  text-align: right;
+}
+.input3{
+  margin-left: 55rpx;
+}
+.input4{
+  margin-left: 20rpx;
+}

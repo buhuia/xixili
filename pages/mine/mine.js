@@ -7,6 +7,8 @@ Page({
     this.setData({
       userInfo: wx.getStorageSync('userInfo')
     })
+    this.login()
+    console.log(11111)
   },
   login(){
     wx.getUserProfile({
@@ -24,5 +26,10 @@ Page({
       userInfo:''
     })
     wx.setStorageSync('userInfo', '')
+  },
+  goToAddrManage:function(){
+    wx.navigateTo({
+      url: '/pages/addrManager/addrManager'
+    })
   }
 })

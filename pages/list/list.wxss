@@ -89,3 +89,15 @@ page{
   height: 100rpx;
   line-height: 100rpx;
 }
+
+.cart-scroll-view{
+  height: 800rpx;
+}
+
+.detailNumber{
+  position: relative;
+  right: 10rpx;
+  bottom: 10rpx;
+  width: 10rpx;
+  height: 10rpx;
+}

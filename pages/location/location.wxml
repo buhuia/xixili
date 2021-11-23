@@ -1,0 +1,33 @@
+<!--pages/location/location.wxml-->
+<view hidden="{{!show}}">
+  <map name="selectPosition" style="width: 750rpx; height: 400rpx;" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}" markers="{{markers}}"></map>
+</view>
+<mp-searchbar bindinput="getsuggest" bindblur="showOrtherView" bindfocus="hiddenOrtherView" value="{{backfill}}"></mp-searchbar>
+<view hidden="{{show}}" wx:for="{{suggestion}}" wx:key="index" style="width: 750rpx;">
+  <!--绑定回填事件-->
+  <view bindtap="backfill" id="{{index}}">
+    <!--根据需求渲染相应数据-->
+    <!--渲染地址title-->
+    <view>{{item.title}}</view>
+    <!--渲染详细地址-->
+    <view style="font-size:12px;color:#666;">{{item.addr}}</view>
+  </view>
+</view>
+<view hidden="{{!show}}" wx:for="{{poi}}" wx:key="index">
+  <!--绑定回填事件-->
+  <view bindtap="choosePoint" id="{{index}}" style="display:flex; justify-content:space-between;">
+    <view>
+      <!--根据需求渲染相应数据-->
+      <!--渲染地址title-->
+      <view>{{item.title}}</view>
+      <!--渲染详细地址-->
+      <view style="font-size:12px;color:#666;">{{item.addr}}</view>
+    </view>
+    <mp-icon wx:if="{{index == selectedNumber}}" icon="done"></mp-icon>
+  </view>
+</view>
+<view hidden="{{!show}}" bindtap="confirm" style="position: fixed; bottom: 0;width: 750rpx;">
+  <button>确认</button>
+</view>
+
+

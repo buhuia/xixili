@@ -1,1 +1,35 @@
-<text>Hello list</text>
+<view class="container">
+  <swiper class="swiper" 
+  indicator-dots="true" 
+  autoplay="true"
+  circular="true">
+    <swiper-item wx:for="{{foodItem.images}}" wx:key="index">
+      <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+  <scroll-view class="scroll-view" scroll-y="true">
+    <view style="display: flex; justify-content: space-between; margin: 20rpx;">
+      <view>{{foodItem.foodName}}</view>
+      <view style="display: flex;">
+        <view class="circle" bindtap="sub">-</view>
+        <view style="margin: 0 20rpx;">{{number}}</view>
+        <view class="circle" bindtap="add">+</view>
+      </view>
+    </view>
+    <view style="margin: 20rpx;">
+      {{foodItem.introduce}}
+    </view>
+    <view wx:if="{{foodItem.detail.length > 0}}" wx:for="{{detail}}" wx:for-index="key" wx:for-item="value" wx:key="*this">
+      <view style="margin: 20rpx;">{{key}}</view>
+      <view style="display: flex; flex-wrap: wrap;">
+        <view class="detail-card {{selectDetailList[key] === index? 'select' : ''}}" wx:for="{{value}}" wx:key="*this" bindtap="selectDetail" data-key="{{key}}" data-index="{{index}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <view style="margin: 20rpx;">
+      <text>用心烘焙，精选食材，为保证口味以及新鲜度,仅限当日做当日售。部分商品还需要现定现制已保证口感。请广大顾客理解。</text>
+    </view>
+    <view style="margin: 20rpx; background-color: cadetblue;" bindtap="addToCart" data-item="{{foodItem}}" data-selectDetailList="{{selectDetailList}}" data-number="{{number}}">加入购物车</view>
+  </scroll-view>
+</view>

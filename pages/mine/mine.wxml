@@ -1,8 +1,9 @@
 <view>
-  <button wx:if="{{!userInfo}}" bindtap="login">请登录</button>
-  <view wx:else> 
-    <image src="{{userInfo.avatarUrl}}"></image>
-    <text>{{userInfo.nickName}}</text>
-    <button bindtap="logout">退出登录</button>
+  <view class="userinfo">
+    <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
+    <view>
+      <open-data type="userNickName"></open-data>,欢迎光临西西里
+    </view>
   </view>
+  <view bindtap="goToAddrManage">地址管理</view>
 </view>

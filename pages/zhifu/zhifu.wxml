@@ -1,1 +1,38 @@
-<text>Hello list</text>
+<view style="display: flex; flex-direction: column; bottom: 100rpx; margin: 0 30rpx;">
+  <view wx:if="{{mode === 'delivery'}}" bindtap="openMap" data-item="{{addr}}">
+    <view>{{addr.title}}</view>
+    <view>{{addr.name}}</view>
+    <view>{{addr.callNumber}}</view>
+  </view>
+  <view wx:if="{{mode === 'self-help'}}" bindtap="openMap" data-item="{{shopAddr}}">
+    <view>{{shopAddr.title}}</view>
+    <view>{{shopAddr.addr}}</view>
+    <view>{{shopAddr.call}}</view>
+  </view>
+  <view>取餐/配送时间</view>
+  <view wx:for="{{cartData}}" wx:key="*this">
+    <view style="display: flex;">
+      <view>
+        <image src="{{item.image}}" mode="aspectFill" style="height: 200rpx; width: 200rpx;"></image>
+      </view>
+      <view style="flex-grow: 1; display: flex; flex-direction: column;justify-content: space-between; margin: 0 10rpx;">
+        <view>{{item.foodName}}</view>
+        <view wx:for="{{item.selectDetail}}" wx:for-item="selectDetail" wx:key="*this">{{selectDetail}}</view>
+        <view style="display: flex; justify-content: space-between;">
+          <view>总价{{item.price*item.number}}</view>
+          <view style="display: flex;">
+            <view catchtap="deleteItem" data-item="{{item.foodName}}">-</view>
+            <view style="margin: 0 10rpx;">{{item.number}}</view>
+            <view catchtap="addItem" data-item="{{item}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view>备注</view>
+  <textarea></textarea>
+  <view style="width: 700rpx; display: flex; justify-content: space-between; position: fixed; bottom: 100rpx;">
+    <view>合计￥{{totalPrice}}</view>
+    <view bindtap="submitOrder">去支付</view>
+  </view>
+</view>

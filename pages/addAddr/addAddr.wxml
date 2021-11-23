@@ -1,0 +1,39 @@
+<form bindsubmit="submitForm">
+  <block wx:if="{{index !== -1}}">
+    <mp-cell title="联系人">
+      <input class="input3" name="name" value="{{addr.name}}" placeholder="请填写收货人的姓名"/>
+    </mp-cell>
+    <mp-cell title="手机号">
+      <input class="input3" name="callNumber" value="{{addr.callNumber}}" placeholder="请填写收货手机号码"/>
+    </mp-cell>
+    <mp-cell title="收货地址" link="true" url="/pages/location/location">
+      <input class="input4" name="addr" value="{{addr.title}}" placeholder="点击选择"/>
+    </mp-cell>
+    <mp-cell title="详细地址">
+      <input class="input4" name="detailAddr" value="{{addr.detailAddr}}" placeholder="B座6楼602室"/>
+    </mp-cell>
+  </block>
+  <block wx:if="{{index === -1}}">
+    <mp-cell title="联系人">
+      <input class="input3" name="name" placeholder="请填写收货人的姓名"/>
+    </mp-cell>
+    <mp-cell title="手机号">
+      <input class="input3" name="callNumber" placeholder="请填写收货手机号码"/>
+    </mp-cell>
+    <mp-cell title="收货地址" link="true" url="/pages/location/location">
+      <input class="input4" name="addr" value="{{addr.title}}" placeholder="点击选择"/>
+    </mp-cell>
+    <mp-cell title="详细地址">
+      <input class="input4" name="detailAddr" placeholder="B座6楼602室"/>
+    </mp-cell>
+  </block>
+  <mp-cell title="设为默认地址">
+    <view class="switchCell">
+      <switch name="default" checked="true"></switch>
+    </view>
+  </mp-cell>
+  <view slot="button">
+    <button class="weui-btn" type="primary" form-type="submit">确定</button>
+  </view>
+</form>
+
