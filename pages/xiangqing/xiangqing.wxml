@@ -4,32 +4,38 @@
   autoplay="true"
   circular="true">
     <swiper-item wx:for="{{foodItem.images}}" wx:key="index">
-      <image src="{{item}}" mode="aspectFill"></image>
+      <van-image src="{{item}}" fit="cover" width="750rpx" height="100%"></van-image>
     </swiper-item>
   </swiper>
   <scroll-view class="scroll-view" scroll-y="true">
     <view style="display: flex; justify-content: space-between; margin: 20rpx;">
-      <view>{{foodItem.foodName}}</view>
+      <text class="foodName">{{foodItem.foodName}}</text>
       <view style="display: flex;">
-        <view class="circle" bindtap="sub">-</view>
+        <view bindtap="sub">
+          <van-icon name="minus" />
+        </view>
         <view style="margin: 0 20rpx;">{{number}}</view>
-        <view class="circle" bindtap="add">+</view>
-      </view>
-    </view>
-    <view style="margin: 20rpx;">
-      {{foodItem.introduce}}
-    </view>
-    <view wx:if="{{foodItem.detail.length > 0}}" wx:for="{{detail}}" wx:for-index="key" wx:for-item="value" wx:key="*this">
-      <view style="margin: 20rpx;">{{key}}</view>
-      <view style="display: flex; flex-wrap: wrap;">
-        <view class="detail-card {{selectDetailList[key] === index? 'select' : ''}}" wx:for="{{value}}" wx:key="*this" bindtap="selectDetail" data-key="{{key}}" data-index="{{index}}">
-          {{item}}
+        <view bindtap="add">
+          <van-icon name="plus" />
         </view>
       </view>
     </view>
     <view style="margin: 20rpx;">
-      <text>用心烘焙，精选食材，为保证口味以及新鲜度,仅限当日做当日售。部分商品还需要现定现制已保证口感。请广大顾客理解。</text>
+      <text style="color: #999999;">{{foodItem.introduce}}</text>
     </view>
-    <view style="margin: 20rpx; background-color: cadetblue;" bindtap="addToCart" data-item="{{foodItem}}" data-selectDetailList="{{selectDetailList}}" data-number="{{number}}">加入购物车</view>
+    <view wx:if="{{foodItem.detail.length > 0}}" wx:for="{{detail}}" wx:for-index="key" wx:for-item="value" wx:key="*this">
+      <view style="margin: 20rpx; color: #999999;">{{key}}</view>
+      <view style="display: flex; flex-wrap: wrap;">
+        <view class="detail-card {{selectDetailList[key] === index? 'select' : ''}}" wx:for="{{value}}" wx:key="*this" bindtap="selectDetail" data-key="{{key}}" data-index="{{index}}">
+          <text style="margin: 5rpx 10rpx;">{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <view style="margin: 20rpx;color: #999999;">
+      <text>{{introduce}}</text>
+    </view>
+    <view style="margin: 20rpx" bindtap="addToCart" data-item="{{foodItem}}" data-selectDetailList="{{selectDetailList}}" data-number="{{number}}">
+      <van-button block color="#dba871" round>加入购物车</van-button>
+    </view>
   </scroll-view>
 </view>

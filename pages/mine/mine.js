@@ -1,35 +1,21 @@
 Page({
   data: {
-    userInfo:'',
+    vipPoints: 0 ,
   },
 
-  onLoad() {
+  onShow() {
     this.setData({
-      userInfo: wx.getStorageSync('userInfo')
+      vipPoints: wx.getStorageSync('vip').points
     })
-    this.login()
-    console.log(11111)
-  },
-  login(){
-    wx.getUserProfile({
-      desc: '展示用户信息',
-      success: res => {
-        wx.setStorageSync('userInfo', res.userInfo)
-        this.setData({
-          userInfo: res.userInfo
-        })
-      }
-    })
-  },
-  logout(){
-    this.setData({
-      userInfo:''
-    })
-    wx.setStorageSync('userInfo', '')
   },
   goToAddrManage:function(){
     wx.navigateTo({
       url: '/pages/addrManager/addrManager'
+    })
+  },
+  call:function(){
+    wx.makePhoneCall({
+      phoneNumber: '12345678910',
     })
   }
 })

@@ -8,12 +8,34 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  console.log(event)
   const wxContext = cloud.getWXContext()
-  console.log(event)
+  let openId = wxContext.OPENID
+  let orgPoints = event.orgPoints
+  let usedPoints = event.usedPoints
+  let changePoints = event.changePoints
+  delete event.orgPoints
+  delete event.usedPoints
   delete event.userInfo
-  event.vipId = wxContext.OPENID
+  delete event.changePoints
+  event.vipId = openId
   console.log(event)
-  return db.collection("orders").add({
+  db.collection("orders").add({
     data: event
+  })
+  .then(()=>{
+    if(changePoints){
+      return db.collection('vip').doc(openId).update({
+        data:{
+          points: orgPoints - usedPoints
+        }
+      })
+    }else{
+      return db.collection('vip').doc(openId).update({
+        data:{
+          points: orgPoints + event.totalPrice
+        }
+      })
+    }
   })
 }

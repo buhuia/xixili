@@ -1,9 +1,23 @@
 <view>
-  <view class="userinfo">
+  <van-image width="750rpx" height="500rpx" fit="cover" src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/background.jpg" />
+  <view class="userinfo box">
+    <view class="userinfo-text">
+      <open-data class="userinfo-name" type="userNickName"></open-data>
+      <text class="text">每消费1元累计1积分</text>
+      <text class="text">100积分抵现5元</text>
+    </view>
     <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
-    <view>
-      <open-data type="userNickName"></open-data>,欢迎光临西西里
+  </view>
+  <view class="box card">
+    <view class="addrManager" bindtap="goToAddrManage">
+      <text>地址管理</text>
+    </view>
+    <view class="addrManager" style="border-top: #f2f2f2 solid 1rpx; margin-right: 20rpx" bindtap="call">
+      <text>联系商家</text>
+    </view>
+    <view class="point">
+      <text>积分</text>
+      <text>{{vipPoints}}</text>
     </view>
   </view>
-  <view bindtap="goToAddrManage">地址管理</view>
 </view>

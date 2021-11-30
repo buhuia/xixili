@@ -23,6 +23,30 @@
           "pathName": "pages/addAddr/addAddr",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/xiangqing/xiangqing",
+          "pathName": "pages/xiangqing/xiangqing",
+          "query": "_id=18ed09686173e46c017a56435cc09acd",
+          "scene": null
+        },
+        {
+          "name": "pages/addrManager/addrManager",
+          "pathName": "pages/addrManager/addrManager",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/zhifu/zhifu",
+          "pathName": "pages/zhifu/zhifu",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/order/order",
+          "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
         }
       ]
     }

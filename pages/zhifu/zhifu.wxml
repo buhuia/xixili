@@ -1,38 +1,59 @@
-<view style="display: flex; flex-direction: column; bottom: 100rpx; margin: 0 30rpx;">
-  <view wx:if="{{mode === 'delivery'}}" bindtap="openMap" data-item="{{addr}}">
-    <view>{{addr.title}}</view>
+<view class="card" wx:if="{{mode === 'delivery'}}" bindtap="openMap" data-item="{{addr}}">
+  <view class="cardItem">配送地址: {{addr.title}}</view>
+  <view class="cardItem" style="font-size: small;color: #c2c2c2;">
     <view>{{addr.name}}</view>
-    <view>{{addr.callNumber}}</view>
+    <view>联系电话: {{addr.callNumber}}</view>
   </view>
-  <view wx:if="{{mode === 'self-help'}}" bindtap="openMap" data-item="{{shopAddr}}">
-    <view>{{shopAddr.title}}</view>
+</view>
+<view class="card" wx:if="{{mode === 'self-help'}}" bindtap="openMap" data-item="{{shopAddr}}">
+  <view class="cardItem">到店位置: {{shopAddr.title}}</view>
+  <view class="cardItem" style="font-size: small;color: #c2c2c2;">
     <view>{{shopAddr.addr}}</view>
-    <view>{{shopAddr.call}}</view>
+    <view>联系电话: {{shopAddr.call}}</view>
   </view>
-  <view>取餐/配送时间</view>
-  <view wx:for="{{cartData}}" wx:key="*this">
-    <view style="display: flex;">
-      <view>
-        <image src="{{item.image}}" mode="aspectFill" style="height: 200rpx; width: 200rpx;"></image>
+</view>
+<view class="card">
+  <view class="cardItem">
+    <view wx:for="{{cartData}}" wx:key="*this" style="display: flex;align-items: center;padding: 10rpx 0;">
+      <view style="height: 150rpx;">
+        <van-image src="{{item.image}}" fit="cover" width="150rpx" height="150rpx" radius="10rpx"/>
       </view>
-      <view style="flex-grow: 1; display: flex; flex-direction: column;justify-content: space-between; margin: 0 10rpx;">
+      <view style="flex-grow: 1; display: flex; flex-direction: column;justify-content: space-between;height: 150rpx;">
         <view>{{item.foodName}}</view>
-        <view wx:for="{{item.selectDetail}}" wx:for-item="selectDetail" wx:key="*this">{{selectDetail}}</view>
-        <view style="display: flex; justify-content: space-between;">
-          <view>总价{{item.price*item.number}}</view>
-          <view style="display: flex;">
-            <view catchtap="deleteItem" data-item="{{item.foodName}}">-</view>
-            <view style="margin: 0 10rpx;">{{item.number}}</view>
-            <view catchtap="addItem" data-item="{{item}}">+</view>
+        <view style="display:flex;flex-direction: row;">
+          <view wx:for="{{item.detail}}" wx:for-item="selectDetail" wx:key="*this" style="margin-right: 10rpx; font-size: small;color: #c2c2c2;">
+            {{selectDetail}}
           </view>
+        </view>
+        <view style="display: flex; justify-content: space-between;">
+          <view>￥{{item.price}}</view>
+          <view style="margin-right:10rpx;">x{{item.number}}</view>
         </view>
       </view>
     </view>
   </view>
-  <view>备注</view>
-  <textarea></textarea>
-  <view style="width: 700rpx; display: flex; justify-content: space-between; position: fixed; bottom: 100rpx;">
-    <view>合计￥{{totalPrice}}</view>
-    <view bindtap="submitOrder">去支付</view>
+</view>
+<view wx:if="{{points > 0}}" class="card">
+  <view class="cardItem" style="display: flex;flex-direction: row;justify-content: space-between; height: 80rpx; align-items: center;">
+    <text>可用积分抵现: {{points}}</text>
+    <view style="width: 40rpx; margin-right: 10rpx; overflow: visible;">
+      <van-checkbox
+      value="{{ checked }}"
+      checked-color="#e1aa66"
+      bind:change="onChange"
+      />
+    </view>
   </view>
+</view>
+<view class="card">
+  <text class="cardItem">备注</text>
+  <textarea class="cardItem remark" placeholder="口味、包装等要求" adjust-position="true" bindinput="setNote"></textarea>
+</view>
+<view style="height: 100rpx;"></view>
+<view class="submit">
+  <view style="display: flex; flex-direction: column; margin-left: 30rpx;">
+    <text>合计￥{{totalPrice}}</text>
+    <text style="color: #dcaa72; font-size: small;">可获得积分{{checked? 0: totalPrice}}</text>
+  </view>
+  <view class="button" bindtap="submitOrder">去支付</view>
 </view>

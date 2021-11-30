@@ -1,48 +1,49 @@
 /**index.wxss**/
 page{
-  height: 100%;
+  background-color: #f7f7f7;
 }
-
-.userinfo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: #aaa;
-  flex: 1 0 39%;
-}
-
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.entrance {
-  display: flex;
-  flex-direction: row;
-  justify-content:space-around;
-  flex: 1 0 59%;
-  align-items: center;
-}
-
-.line {
-  width: 80%;
-  height:2rpx;
+swiper{
   margin: 0 auto;
-  background:rgb(206, 203, 203);
-  }
+  width:650rpx;
+  height:650rpx;
+  border-radius: 50rpx;
+  overflow: hidden;
+}
 
-.self-help,.delivery {
+.userinfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20rpx;
+  margin: 0 50rpx;
+  background-color: #ffffff;
+  height: 150rpx;
+}
+
+.userinfo-avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  overflow: hidden;
+  margin-right: 50rpx;
+}
+
+.entrance{
+  display: flex;
+  margin: 0 50rpx;
+  animation-direction: row;
+  justify-content: space-around;
+  background-color: #ffffff;
+  margin: 0 50rpx;
+  border-radius: 20rpx;
+}
+
+.self-help,.delivery{
+  display: flex;
+  flex-direction: column;
   width: 200rpx;
   height: 300rpx;
-  background-color: aqua;
-  text-align:center;
-  line-height: 300rpx;
-}
-
-swiper {
-  height: 30%;
-  margin: 0 auto;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: bold
 }

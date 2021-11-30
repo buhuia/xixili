@@ -1,1 +1,42 @@
 /* pages/dizhiguanli/dizhiguanli.wxss */
+page{
+  background-color: #f7f7f7;
+}
+
+.card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  height: 120rpx;
+  border-bottom: #efefef solid 1rpx;
+}
+
+.default{
+  background-color: #f8eee3;
+  color: #ce9c65;
+}
+
+.addr{
+  width: 550rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.button{
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.van-button{
+  width: 200rpx;
+  margin-bottom: 10rpx;
+}

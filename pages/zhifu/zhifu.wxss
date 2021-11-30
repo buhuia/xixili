@@ -1,0 +1,41 @@
+page{
+  background-color: #f6f6f6;
+}
+
+.card{
+  background-color: #ffffff;
+  margin: 20rpx 30rpx;
+  border-radius: 10rpx;
+}
+
+.cardItem{
+  margin: 20rpx 10rpx;
+}
+
+.remark{
+  width: 690rpx;
+}
+
+.submit{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  margin-left: 0;
+  height: 100rpx;
+  background-color: #ffffff;
+  z-index: 999;
+}
+
+.button{
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin-right: 30rpx;
+  width: 200rpx;
+  border-radius: 40rpx;
+  background-color: #e1aa66;
+  color: white;
+}

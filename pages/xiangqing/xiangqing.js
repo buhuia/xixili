@@ -3,7 +3,8 @@ Page({
     foodItem: {},
     number: 1,//初始化数目
     detail: {},
-    selectDetailList: {}
+    selectDetailList: {},
+    introduce: ""
   },
   onLoad(e){
     //初始化，通过_id获取详情。
@@ -19,6 +20,9 @@ Page({
           this.classifyDetail(this.data.foodItem.detail)
         }
       })
+    })
+    this.setData({
+      introduce: wx.getStorageSync('staticData').introduce
     })
   },
   classifyDetail:function(detailArr){

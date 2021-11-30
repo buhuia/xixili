@@ -1,4 +1,61 @@
-.list{
+page{
+  background-color: #f5f6f7;
+  height: 100%;
+}
+.card{
+  background-color: #ffffff;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  margin: 20rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+}
+
+.status{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.itemInfo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemImage{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.itemNumber{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.popup{
+  width: 600rpx;
+  border-radius: 20rpx;
+}
+
+.popCard{
+  background-color: #ffffff;
+  margin: 10rpx;
+}
+
+.popCardGray{
+  font-size: small;
+  color: #c2c2c2;
+}
+
+.adminStatus{
+  background-color: #dba871;
+  width: 150rpx;
+  border-radius: 25rpx;
+  text-align: center;
+  color: #ffffff;
 }

@@ -10,26 +10,23 @@ page{
 
 .swiper{
   height: 35%;
-  background-color: brown;
 }
 
 .scroll-view{
   height: 65%;
 }
 
-.circle {
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 50%;
-  background: #E83338;
-  line-height: 40rpx;
-  text-align: center;
+.foodName{
+  font-size: large;
 }
 
 .detail-card{
-  margin: 20rpx;
+  margin: 10rpx;
+  background-color: #f5f5f7;
+  border-radius: 4rpx;
 }
 
 .select{
-  background-color: #E83338;
+  background-color: #f8eee3;
+  color: #ce9c65;
 }

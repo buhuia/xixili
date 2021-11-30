@@ -3,6 +3,7 @@
 Page({
   data: {
     background: [],
+    announcement: ''
   },
   onLoad:function() {
     wx.cloud.init({
@@ -12,7 +13,8 @@ Page({
     db.collection("staticData").get()
     .then(res => {
       this.setData({
-        background: res.data[0].swiper
+        background: res.data[0].swiper,
+        announcement: res.data[0].announcement
       })
       let staticData =  res.data[0]
       delete staticData.swiper
@@ -26,6 +28,16 @@ Page({
     })
     .then(res => {
       wx.setStorageSync('vip', res.result)
+    })
+  },
+  goToSelf:function(){
+    wx.navigateTo({
+      url: '/pages/list/list?mode=self-help',
+    })
+  },
+  goToDelivery:function(){
+    wx.navigateTo({
+      url: '/pages/list/list?mode=delivery',
     })
   }
 })

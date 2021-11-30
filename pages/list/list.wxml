@@ -1,43 +1,55 @@
-<view wx:if="{{mode === 'delivery'}}" bindtap="goToAddrManage">
-  {{addr.title}}
+<view class="position" wx:if="{{mode === 'delivery'}}" bindtap="goToAddrManage">
+  <view>
+    <van-icon name="location-o" />
+    配送地址：{{addr.title}}
+    <van-icon name="arrow" />
+  </view>
 </view>
-<view bindtap="openMap" wx:if="{{mode === 'self-help'}}">
-  {{shopAddr.title}}
+<view class="position" bindtap="openMap" wx:if="{{mode === 'self-help'}}">
+  <view>
+    <van-icon name="location-o" />
+    店铺地址：{{shopAddr.title}}
+    <van-icon name="arrow" />
+  </view>
 </view>
 <view class="total-list">
   <scroll-view class="menu" scroll-y="true">
-    <view class="menu-list {{selectIndex === index ? 'select' : ''}}" id="m{{index}}" data-index="{{index}}" wx:for="{{listData}}" wx:key="index" bindtap="selectMenu">
-      {{item.kind}}
+    <view class="menu-list {{selectIndex === index ? 'menu-select' : ''}}" id="m{{index}}" data-index="{{index}}" wx:for="{{listData}}" wx:key="index" bindtap="selectMenu">
+      <text class="menu-text {{selectIndex === index ? 'menu-text-select' : ''}}">{{item.kind}}</text>
     </view>
   </scroll-view>
   <scroll-view class="list" scroll-y="true" bindscroll="scroll" scroll-into-view="{{listIndex}}">
     <view wx:for="{{listData}}" wx:key="index" id="l{{index}}">
       <view class="title">{{item.kind}}</view>
       <view class="content-list" wx:for="{{item.content}}" wx:for-item="content" wx:key="index" bindtap="goToDetail" data-id="{{content._id}}">
-        <image class="food-image" src="{{content.images[0]}}">图像</image>
+        <van-image  class="food-image" src="{{content.images[0]}}" fit="cover" width="200rpx" height="200rpx" radius="10rpx"/>
         <view class="food-info">
           <view>{{content.foodName}}</view>
           <view class="food-price">
             <view>{{content.price}}</view>
             <view style="display: flex;"> 
               <block wx:if="{{content.detail.length > 0}}">
-                <view style="background-color: cadetblue;">
-                  <text style="margin: 20rpx;">选规格</text>
-                </view>
                 <view wx:for="{{detailItemNumber}}" wx:key="index">
-                  <view class="detailNumber" wx:if="{{index === content.foodName}}">
-                    {{detailItemNumber[index]}}
-                  </view>
+                    <view class="detailNumber" wx:if="{{index === content.foodName}}">
+                      {{detailItemNumber[index]}}
+                    </view>
                 </view>
+                <van-button color="#dba871" round size="small">
+                  选规格
+                </van-button>
               </block>
               <block wx:else>
                 <view wx:for="{{cartData}}" wx:key="index">
                   <view style="display: flex;" wx:if="{{item.foodName === content.foodName}}">
-                    <view catchtap="deleteItem" data-item="{{content}}">-</view>
-                    <view style="margin: 0 10rpx;">{{item.number}}</view>
+                    <view catchtap="deleteItem" data-item="{{content}}">
+                      <van-icon name="minus" />
+                    </view>
+                    <view style="margin: 0 20rpx;">{{item.number}}</view>
                   </view>
                 </view>
-                <view catchtap="addItem" data-item="{{content}}">+</view>
+                <view catchtap="addItem" data-item="{{content}}">
+                  <van-icon name="plus" />
+                </view>
               </block>
             </view>
           </view>
@@ -47,38 +59,43 @@
   </scroll-view>
 </view>
 <page-container show="{{showCart}}" round="ture" bind:afterleave="closeCart">
-  <view style="display: flex; justify-content: space-between; align-items: center; margin: 10rpx;">
+  <view style="display: flex; justify-content: space-between; align-items: center; margin: 20rpx;">
     <text>已点餐品</text>
     <text bindtap="clearCart">清空购物车</text>
   </view>
   <scroll-view class="{{cartData.length > 3? 'cart-scroll-view': ''}}" scroll-y="ture">
-    <view wx:for="{{cartData}}" wx:key="*this">
-      <view class="cart-list" style="display: flex;">
-        <view class="cart-list-image">
-          <image src="{{item.image}}" mode="aspectFill" style="height: 200rpx; width: 200rpx;"></image>
-        </view>
-        <view style="flex-grow: 1; display: flex; flex-direction: column;justify-content: space-between; margin: 0 10rpx;">
+    <view wx:for="{{cartData}}" wx:key="*this" style="margin: 0 20rpx;">
+      <view style="display: flex; height: 200rpx;">
+        <van-image src="{{item.image}}" fit="cover" height="200rpx" width="200rpx" radius="10rpx" style="margin-right: 20rpx;"/>
+        <view style="flex-grow: 1; display: flex; flex-direction: column;justify-content: space-between;">
           <view>{{item.foodName}}</view>
-          <view wx:for="{{item.selectDetail}}" wx:for-item="selectDetail" wx:key="*this">{{selectDetail}}</view>
+          <view>
+            <view wx:for="{{item.detail}}" wx:for-item="selectDetail" wx:key="*this" style="display: inline; margin-right: 10rpx; color: #999999; font-size: small;">{{selectDetail}}</view>
+          </view>
           <view style="display: flex; justify-content: space-between;">
-            <view>总价{{item.price*item.number}}</view>
+            <view>总价:  {{item.price*item.number}}</view>
             <view style="display: flex;">
-              <view catchtap="deleteItem" data-item="{{item}}">-</view>
-              <view style="margin: 0 10rpx;">{{item.number}}</view>
-              <view catchtap="addItem" data-item="{{item}}">+</view>
+              <view catchtap="deleteItem" data-item="{{item}}">
+                <van-icon name="minus" />
+              </view>
+              <view style="margin: 0 20rpx;">{{item.number}}</view>
+              <view catchtap="addItem" data-item="{{item}}">
+                <van-icon name="plus" />
+              </view>
             </view>
           </view>
         </view>
       </view>
+      <van-divider style="margin: 20rpx 0;"/>
     </view>
   </scroll-view>
   <view style="height: 100rpx;"></view>
 </page-container>
 <view class="shopping-cart" bindtap="showCart">
-    <image class="cart-image" src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/cart.svg"></image>
-    <view wx:if="{{totalNumber > 0}}">总数{{totalNumber}}</view>
-    <view>总价：{{totalPrice}}</view>
-    <button class="cart-button" size="mini" catchtap="submitOrder">
-      <text class="button-content">结算</text>
-    </button>
+  <van-icon name="cart-o" info="{{totalNumber?totalNumber:''}}" size="100rpx" style="margin: 0 20rpx;"/>
+  <!-- <view wx:if="{{totalNumber > 0}}">总数{{totalNumber}}</view> -->
+  <view>总价：{{totalPrice}}</view>
+  <view class="cart-button" catchtap="submitOrder">
+    <text>结算</text>
+  </view>
 </view>

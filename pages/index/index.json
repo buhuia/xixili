@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-image": "@vant/weapp/image/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-divider": "@vant/weapp/divider/index"
+  },
+  "window":{
+    "navigationStyle": "custom"
+  }
 }

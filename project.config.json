@@ -33,15 +33,20 @@
     "enableEngineNative": false,
     "useIsolateContext": true,
     "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ],
     "minifyWXSS": true,
     "disableUseStrict": false,
     "showES6CompileOption": false,
     "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.20.1",
+  "libVersion": "2.20.2",
   "appid": "wx6d22c90c8b4ffb5d",
   "projectname": "%E8%A5%BF%E8%A5%BF%E9%87%8C%E7%83%98%E7%84%99%E5%B7%A5%E4%BD%9C%E5%AE%A4",
   "debugOptions": {

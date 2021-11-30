@@ -1,1 +1,66 @@
-@import "/pages/index/index.wxss"
+page{
+  background-color: #f6f6f6;
+}
+.userinfo{
+  display: flex;
+  justify-content: space-between;
+  height: 200rpx;
+}
+
+.userinfo-text{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.userinfo-avatar{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+  position: relative;
+  bottom: 50rpx;
+}
+
+.userinfo-name{
+  font-size: larger;
+}
+
+.text{
+  color:#5d5d5d;
+  font-size: small;
+}
+
+.box{
+  position: relative;
+  bottom: 100rpx;
+  width: 700rpx;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+}
+
+.addrManager{
+  margin-left: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: large;
+}
+
+.point{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20rpx;
+  height: 100rpx;
+  border-top: #f2f2f2 solid 1rpx;
+  font-size: large;
+}

@@ -1,5 +1,92 @@
-<view class="list">
-  <view>当前订单</view>
-  <view>历史订单</view>
-  <view wx:if="{{isAdmin}}">待处理订单</view>
-</view>
+<van-tabs active="{{name}}" bind:click="getOrders">
+  <van-tab title="当前订单" name="undone" >
+    <view wx:for="{{orders}}" class="card" wx:key="*this" bindtap="showOrder" data-item="{{item}}">
+      <view class="status">
+        <view>{{item.mode}}</view>
+        <view>{{item.orderStatus}}</view>
+      </view>
+      <view class="itemInfo">
+        <view class="itemImage">
+          <van-image fit="cover" width="200rpx" height="200rpx" radius="20rpx" src="{{item.orderContent[0].image}}" />
+          <van-icon wx:if="{{item.orderContent.length > 1}}" name="ellipsis" size="50rpx" />
+        </view>
+        <view class="itemNumber">
+          <view>x{{item.orderContent.length}}</view>
+          <view>￥{{item.totalPrice}}</view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab title="历史订单" name="done" >
+    <view wx:for="{{orders}}" class="card" wx:key="*this" bindtap="showOrder" data-item="{{item}}">
+      <view class="status">
+        <view>{{item.mode}}</view>
+        <view>{{item.orderStatus}}</view>
+      </view>
+      <view class="itemInfo">
+        <view class="itemImage">
+          <van-image fit="cover" width="200rpx" height="200rpx" radius="20rpx" src="{{item.orderContent[0].image}}" />
+          <van-icon wx:if="{{item.orderContent.length > 1}}" name="ellipsis" size="50rpx" />
+        </view>
+        <view class="itemNumber">
+          <view>x{{item.orderContent.length}}</view>
+          <view>￥{{item.totalPrice}}</view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+  <van-tab wx:if="{{isAdmin}}" title="管理员" name="admin" >
+    <view wx:for="{{orders}}" class="card" wx:key="*this" bindtap="showOrder" data-item="{{item}}">
+      <view class="status">
+        <view>{{item.mode}}</view>
+        <view class="adminStatus" catchtap="changeStatus" data-item="{{item}}">{{item.orderStatus}}</view>
+      </view>
+      <view class="itemInfo">
+        <view class="itemImage">
+          <van-image fit="cover" width="200rpx" height="200rpx" radius="20rpx" src="{{item.orderContent[0].image}}" />
+          <van-icon wx:if="{{item.orderContent.length > 1}}" name="ellipsis" size="50rpx" />
+        </view>
+        <view class="itemNumber">
+          <view>x{{item.orderContent.length}}</view>
+          <view>￥{{item.totalPrice}}</view>
+        </view>
+      </view>
+    </view>
+  </van-tab>
+</van-tabs>
+<van-popup show="{{ show }}" bind:close="onClose" custom-class="popup" custom-style="background-color: #f5f6f7;" position="left">
+  <view class="popCard" wx:if="{{item.mode === '到店订单'}}">
+    <view>到店地址：{{item.addr.title}}</view>
+    <view class="popCardGray">{{item.addr.addr}}</view>
+    <view class="popCardGray">联系电话：{{item.addr.call}}</view>
+  </view>
+  <view class="popCard" wx:if="{{item.mode === '外卖订单'}}">
+    <view>配送地址：{{item.addr.title}}</view>
+    <view class="popCardGray">{{item.addr.addr}}</view>
+    <view class="popCardGray">联系电话：{{item.addr.callNumber}}</view>
+  </view>
+  <view class="popCard" wx:for="{{item.orderContent}}" wx:key="*this" style="display: flex;align-items: center;padding: 10rpx 0;">
+    <view style="height: 150rpx;">
+      <van-image src="{{item.image}}" fit="cover" width="150rpx" height="150rpx" radius="10rpx"/>
+    </view>
+    <view style="flex-grow: 1; display: flex; flex-direction: column;justify-content: space-between;height: 150rpx;">
+      <view>{{item.foodName}}</view>
+      <view style="display:flex;flex-direction: row;">
+        <view wx:for="{{item.detail}}" wx:for-item="selectDetail" wx:key="*this" style="margin-right: 10rpx; font-size: small;color: #c2c2c2;">
+          {{selectDetail}}
+        </view>
+      </view>
+      <view style="display: flex; justify-content: space-between;">
+        <view>￥{{item.price}}</view>
+        <view style="margin-right:10rpx;">x{{item.number}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{item.note}}" class="popCard">
+    <text>备注</text>
+    <textarea name="备注" value="{{item.note}}"></textarea>
+  </view>
+  <view class="popCard">
+    <text>实际支付：{{item.totalPrice}}</text>
+  </view>
+</van-popup>

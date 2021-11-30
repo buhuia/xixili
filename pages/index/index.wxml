@@ -5,26 +5,29 @@
   autoplay = "ture">
   <block wx:for="{{background}}" wx:key="*this">
     <swiper-item>
-      <image src="{{item}}" mode="aspectFit"></image>
+      <van-image src="{{item}}" fit="cover" width="650rpx" height="650rpx" radius="50rpx"></van-image>
     </swiper-item>
   </block>
 </swiper>
-<view class="container">
-  <view class="userinfo">
-    <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
-    <view>
-      <open-data type="userNickName"></open-data>,欢迎光临西西里
-    </view>
-  </view>
-  <view class="line"></view>
-  <view class="entrance">
-    <view class="self-help">
-      <navigator url="/pages/list/list?mode=self-help">自提</navigator>
+<van-notice-bar
+  scrollable="{{ ture}}"
+  text="{{announcement}}"
+  style="margin: 0 50rpx;"
+/>
+<view class="userinfo">
+  <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
+  <open-data type="userNickName"></open-data>,欢迎光临西西里
+</view>
+<van-divider hairline />
+<view class="entrance">
+  <view class="self-help" bindtap="goToSelf">
+    <van-image src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/餐具.png" fit="cover" width="200rpx" height="200rpx"></van-image>
+    <text>自提</text>
 <!-- 自提 icon 绑定自提页 pages -->
-    </view>
-    <view class="delivery">
-      <navigator url="/pages/list/list?mode=delivery">外卖</navigator>
+  </view>
+  <view class="delivery" bindtap="goToDelivery">
+    <van-image src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/外卖.png" fit="cover" width="200rpx" height="200rpx"></van-image>
+    <text>外卖</text>
 <!-- 外卖 icon 绑定点单页 pages可合一，用wx：if，把地址屏蔽 -->
-    </view>
   </view>
 </view>

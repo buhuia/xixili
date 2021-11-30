@@ -13,28 +13,35 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "西西里烘焙",
+    "navigationBarBackgroundColor": "#f7f7f7",
+    "navigationBarTitleText": "西西里烘焙😘",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#f7f7f7",
+    "color": "#bfbdbc",
+    "selectedColor": "#343434",
     "list": [
       {
+        "iconPath": "/image/index.png",
+        "selectedIconPath": "/image/index-fill.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
+        "iconPath": "/image/order.png",
+        "selectedIconPath": "/image/order-fill.png",
         "pagePath": "pages/order/order",
         "text": "订单"
       },
       {
+        "iconPath": "/image/my1.png",
+        "selectedIconPath": "/image/my1-fill.png",
         "pagePath": "pages/mine/mine",
         "text": "我的"
       }
     ]
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {

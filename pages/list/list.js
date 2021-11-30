@@ -84,9 +84,13 @@ Page({
       })
     }
   }, 
-  onShow:function(){
+  onShow:function(){  
     this.setData({
-      addr: wx.getStorageSync('vip').addrs[0]
+      addr: wx.getStorageSync('vip').addrs[0]? wx.getStorageSync('vip').addrs[0]: {}
+    }, ()=>{
+      if(!this.data.addr.hasOwnProperty("title")){
+        this.goToAddrManage()
+      }
     })
   },
   onUnload:function(){
@@ -274,9 +278,16 @@ Page({
     })
   },
   submitOrder:function(){
-    wx.navigateTo({
-      url: '/pages/zhifu/zhifu',
-    })
+    if(this.data.totalPrice === 0){
+      wx.showToast({
+        icon:"none",
+        title: '请选择餐品'
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/zhifu/zhifu',
+      })
+    }
   },
   goToAddrManage:function(){
     wx.navigateTo({
