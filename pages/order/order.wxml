@@ -84,7 +84,7 @@
   </view>
   <view wx:if="{{item.note}}" class="popCard">
     <text>备注</text>
-    <textarea name="备注" value="{{item.note}}"></textarea>
+    <text>{{item.note}}</text>
   </view>
   <view class="popCard">
     <text>实际支付：{{item.totalPrice}}</text>

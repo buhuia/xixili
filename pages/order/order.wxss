@@ -45,6 +45,8 @@ page{
 .popCard{
   background-color: #ffffff;
   margin: 10rpx;
+  display: flex;
+  flex-direction: column;
 }
 
 .popCardGray{

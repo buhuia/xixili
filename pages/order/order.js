@@ -67,7 +67,6 @@ Page({
     })
   },
   showOrder:function(e){
-    console.log(e.currentTarget.dataset.item)
     this.setData({
       show: true,
       item: e.currentTarget.dataset.item
