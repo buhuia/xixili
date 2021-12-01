@@ -6,6 +6,10 @@
 https://www.bilibili.com/video/BV1nP4y137cz/
 
 https://www.bilibili.com/video/BV1hQ4y1i7VE/
+
+
+<img src="https://user-images.githubusercontent.com/33677284/144193109-1b19f15e-4142-4cae-a63b-7e5e34f7ce26.jpg" width="20%"><img src="https://user-images.githubusercontent.com/33677284/144194084-0bfe549a-a0f2-4aa9-bb73-7c7f5d8b8245.jpg" width="20%"><img src="https://user-images.githubusercontent.com/33677284/144193145-444a4f8b-afd3-4407-85f2-cc7676bc8675.jpg" width="20%"><img src="https://user-images.githubusercontent.com/33677284/144193168-a2c4b799-a875-4dd9-adf7-b10dc2c21d31.jpg" width="20%"><img src="https://user-images.githubusercontent.com/33677284/144193183-e77a5b9c-449a-406a-a874-0cef0f300828.jpg" width="20%"><img src="https://user-images.githubusercontent.com/33677284/144193217-57d0173c-2966-4232-8307-5890217d67e5.jpg" width="20%"><img src="https://user-images.githubusercontent.com/33677284/144193242-9023089d-ec2a-454b-8be0-68dcb860d14e.jpg" width="20%">
+
 ## 后台部分
 纯原生开发，后台使用云函数。后台配置遵循微信小程序官方指导即可。云开发使用按量付费，仅开发的话免费配额就够用了。
 
