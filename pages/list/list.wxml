@@ -93,7 +93,6 @@
 </page-container>
 <view class="shopping-cart" bindtap="showCart">
   <van-icon name="cart-o" info="{{totalNumber?totalNumber:''}}" size="100rpx" style="margin: 0 20rpx;"/>
-  <!-- <view wx:if="{{totalNumber > 0}}">总数{{totalNumber}}</view> -->
   <view>总价：{{totalPrice}}</view>
   <view class="cart-button" catchtap="submitOrder">
     <text>结算</text>

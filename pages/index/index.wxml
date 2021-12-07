@@ -21,12 +21,12 @@
 <van-divider hairline />
 <view class="entrance">
   <view class="self-help" bindtap="goToSelf">
-    <van-image src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/餐具.png" fit="cover" width="200rpx" height="200rpx"></van-image>
+    <van-image src="/image/self.png" fit="cover" width="200rpx" height="200rpx"></van-image>
     <text>自提</text>
 <!-- 自提 icon 绑定自提页 pages -->
   </view>
   <view class="delivery" bindtap="goToDelivery">
-    <van-image src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/外卖.png" fit="cover" width="200rpx" height="200rpx"></van-image>
+    <van-image src="/image/delivery.png" fit="cover" width="200rpx" height="200rpx"></van-image>
     <text>外卖</text>
 <!-- 外卖 icon 绑定点单页 pages可合一，用wx：if，把地址屏蔽 -->
   </view>

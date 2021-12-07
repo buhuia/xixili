@@ -1,5 +1,5 @@
 <view>
-  <van-image width="750rpx" height="500rpx" fit="cover" src="cloud://cloud1-8gtq80g57c7f2b5a.636c-cloud1-8gtq80g57c7f2b5a-1307695606/images/background.jpg" />
+  <van-image width="750rpx" height="500rpx" fit="cover" src="/image/background.jpg" />
   <view class="userinfo box">
     <view class="userinfo-text">
       <open-data class="userinfo-name" type="userNickName"></open-data>
