@@ -1,16 +1,25 @@
 Page({
   data:{
     name: 'undone',
-    isAdmin: true,
+    isAdmin: true,//默认都可以操作订单，如需限制改为false，配合后台在statiData.admin中添加自己的openid即可
     orders: [],
     show: false,
     item: {}
   },
+  onLoad: function(){
+    this.checkAdmin()
+  },
   onShow: function(){
     this.getUndone()
   },
-  //todo： 管理员校验，小程序操作订单后续的接单、制作、送达。
+  //todo： 这版本安全性不好，简易版本，直接取localstorage对比了。如果是管理员，进入页面是会设置为true，就可以操作订单了。不是管理员则显示当前订单和历史订单。
   checkAdmin: function(){
+    const adminList = wx.getStorageSync('staticData').admin
+    if(adminList.indexOf(wx.getStorageSync('vip')._id) >= 0){
+      this.setData({
+        isAdmin: true
+      })
+    }
   },
   getOrders:function(e){
     const name = e.detail.name
